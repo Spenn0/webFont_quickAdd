@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_css_include">
+    <sp_css_include action="DELETE">
+        <name>Glory,wght@100&amp;family=Montserrat,ital,wg</name>
+        <source>https://fonts.googleapis.com/css2?family</source>
+        <sp_css/>
+        <sys_class_name>sp_css_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-08 15:27:41</sys_created_on>
+        <sys_id>1b79cb582f623010ec275e072799b692</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Glory,wght@100&amp;family=Montserrat,ital,wg</sys_name>
+        <sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope>
+        <sys_update_name>sp_css_include_1b79cb582f623010ec275e072799b692</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-09-08 15:27:41</sys_updated_on>
+        <url>https://fonts.googleapis.com/css2?family=Glory:wght@100&amp;family=Montserrat:ital,wght@1,600&amp;family=Urbanist:wght@100&amp;display=swap" rel="stylesheet</url>
+    </sp_css_include>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</application>
+        <file_path/>
+        <instance_id>9b4fa053db2e089052dd2f17d496193c</instance_id>
+        <instance_name>dev98323</instance_name>
+        <name>sp_css_include_1b79cb582f623010ec275e072799b692</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_css_include"><sp_css_include action="INSERT_OR_UPDATE"><name>Glory,wght@100&amp;family=Montserrat,ital,wg</name><source>https://fonts.googleapis.com/css2?family</source><sp_css/><sys_class_name>sp_css_include</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2021-09-08 15:27:41</sys_created_on><sys_id>1b79cb582f623010ec275e072799b692</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Glory,wght@100&amp;family=Montserrat,ital,wg</sys_name><sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package><sys_policy/><sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope><sys_update_name>sp_css_include_1b79cb582f623010ec275e072799b692</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2021-09-08 15:27:41</sys_updated_on><url>https://fonts.googleapis.com/css2?family=Glory:wght@100&amp;family=Montserrat:ital,wght@1,600&amp;family=Urbanist:wght@100&amp;display=swap" rel="stylesheet</url></sp_css_include></record_update>]]></payload>
+        <payload_hash>759347044</payload_hash>
+        <record_name>Glory,wght@100&amp;family=Montserrat,ital,wg</record_name>
+        <reverted_from/>
+        <source>446761792f123010ec275e072799b6bb</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-08 15:27:41</sys_created_on>
+        <sys_id>5779cb582f623010ec275e072799b694</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17bc6059ce70000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-09-08 15:27:41</sys_updated_on>
+        <type>CSS Include</type>
+        <update_guid>5f79cb587c623010395d7d76c5f26793</update_guid>
+        <update_guid_history>5f79cb587c623010395d7d76c5f26793:759347044</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Glory,wght@100&amp;family=Montserrat,ital,wg">d0d5100f2f623010ec275e072799b60e</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-16 15:25:59</sys_created_on>
+        <sys_db_object display_value="" name="sp_css_include">sp_css_include</sys_db_object>
+        <sys_id>25e9fdf939014bf786a8f782a5515c61</sys_id>
+        <sys_metadata>1b79cb582f623010ec275e072799b692</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Glory,wght@100&amp;family=Montserrat,ital,wg</sys_name>
+        <sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope>
+        <sys_scope_delete display_value="">7852965362634401b169718d42db1d41</sys_scope_delete>
+        <sys_update_name>sp_css_include_1b79cb582f623010ec275e072799b692</sys_update_name>
+        <sys_update_version display_value="sp_css_include_1b79cb582f623010ec275e072799b692">5779cb582f623010ec275e072799b694</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-09-16 15:25:59</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

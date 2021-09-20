@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_css_include">
+    <sp_css_include action="DELETE">
+        <name>Lora, Nunito Sans, Urbanist (Google Web </name>
+        <source>https://fonts.googleapis.com/css2?family</source>
+        <sp_css/>
+        <sys_class_name>sp_css_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-10 18:53:16</sys_created_on>
+        <sys_id>dabb4ec12fe23010ec275e072799b679</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Lora, Nunito Sans, Urbanist (Google Web </sys_name>
+        <sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope>
+        <sys_update_name>sp_css_include_dabb4ec12fe23010ec275e072799b679</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-09-10 18:53:16</sys_updated_on>
+        <url>https://fonts.googleapis.com/css2?family=Lora:wght@600&amp;family=Nunito+Sans:ital,wght@1,200&amp;family=Urbanist:wght@100&amp;display=swap" rel="stylesheet</url>
+    </sp_css_include>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</application>
+        <file_path/>
+        <instance_id>9b4fa053db2e089052dd2f17d496193c</instance_id>
+        <instance_name>dev98323</instance_name>
+        <name>sp_css_include_dabb4ec12fe23010ec275e072799b679</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_css_include"><sp_css_include action="INSERT_OR_UPDATE"><name>Lora, Nunito Sans, Urbanist (Google Web </name><source>https://fonts.googleapis.com/css2?family</source><sp_css/><sys_class_name>sp_css_include</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2021-09-10 18:53:16</sys_created_on><sys_id>dabb4ec12fe23010ec275e072799b679</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Lora, Nunito Sans, Urbanist (Google Web </sys_name><sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package><sys_policy/><sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope><sys_update_name>sp_css_include_dabb4ec12fe23010ec275e072799b679</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2021-09-10 18:53:16</sys_updated_on><url>https://fonts.googleapis.com/css2?family=Lora:wght@600&amp;family=Nunito+Sans:ital,wght@1,200&amp;family=Urbanist:wght@100&amp;display=swap" rel="stylesheet</url></sp_css_include></record_update>]]></payload>
+        <payload_hash>1505351028</payload_hash>
+        <record_name>Lora, Nunito Sans, Urbanist (Google Web </record_name>
+        <reverted_from/>
+        <source>1a67c4e02f263010ec275e072799b612</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-10 18:53:16</sys_created_on>
+        <sys_id>1abb4ec12fe23010ec275e072799b67b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17bd10e8c4c0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-09-10 18:53:16</sys_updated_on>
+        <type>CSS Include</type>
+        <update_guid>12bb4ec1bfe230104a6cf7cbc393707b</update_guid>
+        <update_guid_history>12bb4ec1bfe230104a6cf7cbc393707b:1505351028</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Lora, Nunito Sans, Urbanist (Google Web ">33a55ccb2f623010ec275e072799b6b0</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-16 15:25:24</sys_created_on>
+        <sys_db_object display_value="" name="sp_css_include">sp_css_include</sys_db_object>
+        <sys_id>a8edd9b4c78a4ba0813c3e4cfd888304</sys_id>
+        <sys_metadata>dabb4ec12fe23010ec275e072799b679</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Lora, Nunito Sans, Urbanist (Google Web </sys_name>
+        <sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope>
+        <sys_scope_delete display_value="">7852965362634401b169718d42db1d41</sys_scope_delete>
+        <sys_update_name>sp_css_include_dabb4ec12fe23010ec275e072799b679</sys_update_name>
+        <sys_update_version display_value="sp_css_include_dabb4ec12fe23010ec275e072799b679">1abb4ec12fe23010ec275e072799b67b</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-09-16 15:25:24</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
