@@ -20,7 +20,7 @@
 		// *extra cred* you could make a business rule that
 		// authenticates the url that is pasted in the url field.		
 	}
-
+		// THIS FUNCTION REVEALS THE BOX THAT SHOWS THE THEME AND CSS INCLUDES WITHIN THE VIEW
 	c.revealThemeEditor = function() {
 		if($scope.view === true) {
 			$scope.view = false;
@@ -29,7 +29,8 @@
 		}
 
 	}
-
+		// THIS FUNCTION TAKES THE DATA THAT COMES FROM THE FORM 
+		// WITHIN THE VIEW AND MASSAGES IT A LITTLE BEFORE SENDING IT TO THE SERVER SCRIPT
 	c.importUrl = function (formData) {
 		var newName = '';
 		var metaSubstring = '';
@@ -38,10 +39,8 @@
 		var finalNameArray = [];
 
 
-		//		console.log("THIS IS FORM DATA: "+ formData)
-
 		//================================================
-		// vv THIS FUNCTION vv TRIMS THE URL INTO THE BATCH OF 
+		// vv THIS part of the FUNCTION vv TRIMS THE URL INTO THE BATCH OF 
 		// FONT FAMILY NAMES (FROM GOOGLE FONTS) THAT WE WILL  
 		// TRIM AND REFINE IN THE FOLLOWING FUNCTIONS
 
@@ -50,17 +49,12 @@
 				c.formData.url.indexOf("family="),
 				c.formData.url.lastIndexOf("&") + 1
 			)
-
-			//	console.log("THIS IS THE METASUBSTRING: " + metaSubstring)
 		}
 
 		newSubstringArray = metaSubstring.toString().split("family=")
 
-
-		//				console.log("newSUBSTRING: " + newSubstringArray)
-
 		//================================================
-		// vv THIS FUNCTION vv IS TAKING THE NEWSUBSTRING ARRAY AND 
+		// vv THIS part of the FUNCTION vv IS TAKING THE NEWSUBSTRING ARRAY AND 
 		// REFINING IT DOWN INTO AN ARRAY OF OBJECTS THAT REFLECT
 		// THE NAMES OF EACH FONT WITHIN THE ORIGINAL URL
 
@@ -70,29 +64,24 @@
 				var theSubstringArraySplice = theSubstringArray.splice(-1, 1)
 				nameArray.push(theSubstringArraySplice)
 			}
-			//				console.log("THIS IS THE SUBSTRING ARRAY: " + theSubstringArray);
 			if (theSubstringArray.indexOf(":") > -1) {
 				var newSubstringArraySplit = theSubstringArray.split(":");
 				var newSubstringArraySplitShift = newSubstringArraySplit.shift();
 				nameArray.push(newSubstringArraySplitShift)
-				//					console.log("NEW ARRAY: "+ newSubstringArraySplitShift);
 			} else {
 				var theSubstringAltSplit = theSubstringArray.split("&")
 				theSubstringAltSplit.pop()
 				var toString = theSubstringAltSplit.toString()
 				nameArray.push(toString)
 			}
-
-			//	console.log("THIS IS THE NAME ARRAY: " + nameArray)
 		}
 
 		//================================================
-		// vv THIS FUNCTION vv IS TAKING THE ARRAY OF OBJECTS FROM 
+		// vv THIS part of the FUNCTION vv IS TAKING THE ARRAY OF OBJECTS FROM 
 		// THE ABOVE FUNCTION, AND IT IS TURNING IT INTO A STRING
 		// SEPERATED BY SPACES AND COMMAS.
 
 		for (var e = 0; e < nameArray.length; e++) {
-			//	var join = ''
 			if (nameArray[e].indexOf("+") > -1) {
 				var split = nameArray[e].split("+");
 				var join = split.join(" ");
@@ -102,10 +91,9 @@
 			}
 			var joined = finalNameArray.join(", ");
 			newName = joined;
-
-			console.log(joined);
 		}
 
+		//vv THIS part of the FUNCTION vv SENDS DATA INTO THE SERVER SCRIPT
 		c.server.get({
 			action: 'importUrl',
 			formData: formData,
@@ -114,7 +102,7 @@
 			c.data.portals.unshift(r.data.importUrl);
 			c.data.portalID = r.data.portalID;
 			c.data.portals.cssIncl = r.data.portals.cssIncl;
-			console.log("CSS_INCLUDE: "+ c.data.portals.cssIncl)
+			// console.log("CSS_INCLUDE: "+ c.data.portals.cssIncl)
 		})
 	}
 }
@@ -146,7 +134,6 @@
   background-size: cover;
   flex: 1;
   width: 300px;
-  // height: 350px;
 }
 .right-container {
   background-image: url("sab_right_2.png");
@@ -155,21 +142,18 @@
   padding: 35px;
   flex: 2;
   width: 300px;
-  //  height: 350px;
 }
 .title-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
   padding: 10px;
 }
 
 .main-title {
   font-size: 21.5px;
   font-family: Sora, sans-serif;
-  //font-family: Poller-One;
   margin-top: 10px;
   margin-bottom: 0px;
   padding: 0px;
@@ -192,8 +176,6 @@
 
 .form-container {
   display: flex;
-  //  justify-content: space-evenly;
-  //	align-items: space-evenly;
   flex-direction: column;
 }
 
@@ -254,8 +236,8 @@
   height: 200px;
 }
 .dependency-card {
-  width: 100px;
-  height: 75px;
+  width: 110px;
+  height: 85px;
   color: black;
   font-size: 12px;
   padding: 10px;
@@ -285,35 +267,25 @@
         <roles/>
         <script><![CDATA[(function () {
 	/* populate the 'data' object */
-	/* e.g., data.table = $sp.getValue('table'); */
-
-	//
-
 
 	data.portals = [];
-//	inputThemeCssIncl = [];
+
 
 	var allThePortalsGR = new GlideRecord("sp_portal");
 	allThePortalsGR.orderByDesc("sys_created_on");
 	allThePortalsGR.query();
-//	var sysAllThePortalsGR = allThePortalsGR.getUniqueValue();
-
 	
+	// THIS FUNCTION LOOPS THROUGH ALLTHEPORTALSGR AND GRABS THE DATA
+	// AND PUTS IT INTO AN OBJECT TO BE CONSUMED BY THE VIEW
 	while (allThePortalsGR.next()) {
-		console.log('made it to while!');
-
 		var portalObj = {};
 		portalObj.cssInclArr = [];
-	//	portalObj.themeNameTop = [];
-
+	
 		portalObj.sys_id = allThePortalsGR.getUniqueValue();
 		portalObj.theme = allThePortalsGR.theme + '';
 		portalObj.themeName = allThePortalsGR.theme.name + '';
 		portalObj.title = allThePortalsGR.getValue("title");
 
-		console.log("THIS IS ALL THE PORTALS GR.THEME: " + portalObj.themeName)
-
-		console.log("THIS IS THE PORTAL OBJ THEME: " + portalObj.theme)
 		 var allTheM2MThemeCssIncl = new GlideRecord("m2m_sp_theme_css_include");
 		 allTheM2MThemeCssIncl.addQuery("sp_theme", portalObj.theme);
 		 allTheM2MThemeCssIncl.query();
@@ -324,25 +296,14 @@
 			cssInclObj.name = allTheM2MThemeCssIncl.sp_css_include.name + "";
 			portalObj.cssInclArr.push(cssInclObj)
 
-		
-			console.log("CSS INCL OBJ NAME:" + cssInclObj.name);
+			// console.log("CSS INCL OBJ NAME:" + cssInclObj.name);
 		}
-
-		// var spThemeTable = GlideRecord("sp_theme");
-		// 	spThemeTable.addQuery("sys_id", portalObj.theme)
-		// 	spThemeTable.query()
-
-		// while(spThemeTable.next()) {
-		// var themeName = {};
-		// 	themeName.name = allTheM2MThemeCssIncl.sp_theme + "";
-		// 	portalObj.themNameTop.push(themeName)
-
-		// }
 
 		data.portals.push(portalObj);
 
 	}
-
+    // THIS FUNCTION TAKES THE DATA FROM THE IMPORT URL AND PUTS THE DATA IN THE CORRECT PLACES:
+	// IN THE sp_css_include , m2m_sp_theme_css_include , sp_theme , and sp_portal tables
 	if (input) {
 		if (input.action === 'importUrl') {
 
@@ -351,13 +312,6 @@
 			var portalID = input.formData.portal.sys_id.toString();
 			var theme = input.formData.portal.theme;
 			var newUrlName = input.newName;
-		//	data.portals.cssIncl = input.formData.portal.theme.spIncludeGRID;
-
-			console.log('theme:' + theme);
-			//console.log(JSON.stringify(input));
-			console.log(inputUrl);
-			console.log("thisIsNewName: " + newUrlName);
-
 
 			var spIncludeGR = new GlideRecord('sp_css_include');
 			spIncludeGR.initialize();
@@ -366,7 +320,6 @@
 			spIncludeGR.source = inputUrl; // maybe update l8r
 			var spIncludeGRID = spIncludeGR.insert();
 
-
 			var m2mThemeInclude = new GlideRecord('m2m_sp_theme_css_include');
 			m2mThemeInclude.initialize();
 			m2mThemeInclude.sp_css_include = spIncludeGRID;
@@ -374,8 +327,6 @@
 			m2mThemeInclude.url = inputUrl;
 			m2mThemeInclude.order = 10;
 			var m2mThemeIncludeID = m2mThemeInclude.insert();
-
-
 
 			//---------------------------
 			//create new theme if the portal doesn't already have one-------
@@ -406,7 +357,7 @@
 				spIncludeGR.source = inputUrl; // maybe update l8r
 				var spIncludeGRID = spIncludeGR.insert();
 
-				console.log("this is the M2M THEME: " + m2m_sp_theme_css_include)
+				// console.log("this is the M2M THEME: " + m2m_sp_theme_css_include)
 				m2mThemeInclude.initialize();
 				m2mThemeInclude.sp_css_include = spIncludeGRID;
 				m2mThemeInclude.sp_theme = theme;
@@ -423,14 +374,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-08-18 17:20:13</sys_created_on>
         <sys_id>07d9dbad2f823010ec275e072799b616</sys_id>
-        <sys_mod_count>1280</sys_mod_count>
+        <sys_mod_count>1312</sys_mod_count>
         <sys_name>WebFont_url_dep</sys_name>
         <sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package>
         <sys_policy/>
         <sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope>
         <sys_update_name>sp_widget_07d9dbad2f823010ec275e072799b616</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2021-09-16 20:26:03</sys_updated_on>
+        <sys_updated_on>2021-09-20 19:29:50</sys_updated_on>
         <template><![CDATA[<div class="page-container width-add">
   <div class="main-container">
     <div class="main-form-container">
@@ -438,7 +389,6 @@
         <h1 class="main-title">
           Webfont Quick Add
         </h1>
-        <!-- <p class="line">-------------------------------------</p> -->
         <h2 class="sub-title">
           Quickly and swiftly add a webfont to your portal here!
         </h2>
@@ -448,7 +398,7 @@
           <label class="url-input-label">
             Url:
           </label>
-          <input class="url-input" type="text-field" ng-model="c.formData.url">
+          <input class="url-input" type="url" ng-model="c.formData.url">
           <label class="portal-input-label">
             Portal:
           </label>
@@ -457,8 +407,6 @@
             <option class="portal-input-option" value="">- s e l e c t - p o r t a l -</option>
           </select>
           <div class="checkbox-container">
-          
-          <!-- <input type= "checkbox" class="edit-theme-checkbox" value="editThemeCheckbox"> -->
         </div>
           <button type="submit" class="submit-button">
             s u b m i t
@@ -478,6 +426,7 @@
     <div class="theme-container">
     <h3>Theme: {{ c.formData.portal.themeName}}</h3>
   </div>
+    <div></div>
     <div class="card-container">
     <div class="dependency-card" ng-repeat="cssIncl in c.formData.portal.cssInclArr track by $index">
       <p>
