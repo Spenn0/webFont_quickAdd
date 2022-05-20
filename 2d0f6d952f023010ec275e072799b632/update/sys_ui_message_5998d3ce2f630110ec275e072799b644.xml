@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_message">
+    <sys_ui_message action="INSERT_OR_UPDATE">
+        <application/>
+        <key>has a prohibited file extension.</key>
+        <language>en</language>
+        <message>has a prohibited file extension.</message>
+        <sys_class_name>sys_ui_message</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-05-20 16:16:57</sys_created_on>
+        <sys_id>5998d3ce2f630110ec275e072799b644</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>has a prohibited file extension.</sys_name>
+        <sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope>
+        <sys_update_name>sys_ui_message_5998d3ce2f630110ec275e072799b644</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-05-20 16:16:57</sys_updated_on>
+    </sys_ui_message>
+</record_update>
