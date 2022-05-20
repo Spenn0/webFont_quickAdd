@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_css_include">
+    <sp_css_include action="DELETE">
+        <name>Azeret Mono, IBM Plex Sans Arabic (Googl</name>
+        <source>href="https://fonts.googleapis.com/css2?</source>
+        <sp_css/>
+        <sys_class_name>sp_css_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-10 16:43:43</sys_created_on>
+        <sys_id>ac1e698d2f623010ec275e072799b693</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Azeret Mono, IBM Plex Sans Arabic (Googl</sys_name>
+        <sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope>
+        <sys_update_name>sp_css_include_ac1e698d2f623010ec275e072799b693</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-09-10 16:43:43</sys_updated_on>
+        <url>href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@200&amp;family=IBM+Plex+Sans+Arabic:wght@100&amp;family=Urbanist:ital,wght@1,100&amp;display=swap</url>
+    </sp_css_include>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</application>
+        <file_path/>
+        <instance_id>9b4fa053db2e089052dd2f17d496193c</instance_id>
+        <instance_name>dev98323</instance_name>
+        <name>sp_css_include_ac1e698d2f623010ec275e072799b693</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_css_include"><sp_css_include action="INSERT_OR_UPDATE"><name>Azeret Mono, IBM Plex Sans Arabic (Googl</name><source>href="https://fonts.googleapis.com/css2?</source><sp_css/><sys_class_name>sp_css_include</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2021-09-10 16:43:43</sys_created_on><sys_id>ac1e698d2f623010ec275e072799b693</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Azeret Mono, IBM Plex Sans Arabic (Googl</sys_name><sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package><sys_policy/><sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope><sys_update_name>sp_css_include_ac1e698d2f623010ec275e072799b693</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2021-09-10 16:43:43</sys_updated_on><url>href="https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@200&amp;family=IBM+Plex+Sans+Arabic:wght@100&amp;family=Urbanist:ital,wght@1,100&amp;display=swap</url></sp_css_include></record_update>]]></payload>
+        <payload_hash>-652144364</payload_hash>
+        <record_name>Azeret Mono, IBM Plex Sans Arabic (Googl</record_name>
+        <reverted_from/>
+        <source>1a67c4e02f263010ec275e072799b612</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-10 16:43:43</sys_created_on>
+        <sys_id>a41e21012fa23010ec275e072799b66b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17bd097f0690000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-09-10 16:43:43</sys_updated_on>
+        <type>CSS Include</type>
+        <update_guid>ac1e2101a2a230102c1a7006db76676a</update_guid>
+        <update_guid_history>ac1e2101a2a230102c1a7006db76676a:-652144364</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Azeret Mono, IBM Plex Sans Arabic (Googl">7626540f2f623010ec275e072799b611</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-16 15:27:31</sys_created_on>
+        <sys_db_object display_value="" name="sp_css_include">sp_css_include</sys_db_object>
+        <sys_id>1afaae8bc3c245528315f151b2eaa331</sys_id>
+        <sys_metadata>ac1e698d2f623010ec275e072799b693</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Azeret Mono, IBM Plex Sans Arabic (Googl</sys_name>
+        <sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope>
+        <sys_scope_delete display_value="">7852965362634401b169718d42db1d41</sys_scope_delete>
+        <sys_update_name>sp_css_include_ac1e698d2f623010ec275e072799b693</sys_update_name>
+        <sys_update_version display_value="sp_css_include_ac1e698d2f623010ec275e072799b693">a41e21012fa23010ec275e072799b66b</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-09-16 15:27:31</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

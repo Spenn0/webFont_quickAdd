@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="db_image">
+    <db_image action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category>general</category>
+        <format>png</format>
+        <height>93</height>
+        <image>6569b8c32fa23010ec275e072799b680</image>
+        <name>3d_box.png</name>
+        <size_bytes>384</size_bytes>
+        <sys_class_name>db_image</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-16 18:01:18</sys_created_on>
+        <sys_id>e239fcc32fe23010ec275e072799b626</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>3d_box.png</sys_name>
+        <sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope>
+        <sys_update_name>db_image_e239fcc32fe23010ec275e072799b626</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-09-16 18:01:27</sys_updated_on>
+        <thumbnail/>
+        <width>126</width>
+    </db_image>
+    <sys_attachment action="INSERT_OR_UPDATE">
+        <average_image_color>#e99988</average_image_color>
+        <chunk_size_bytes>700000</chunk_size_bytes>
+        <compressed>true</compressed>
+        <content_type>image/png</content_type>
+        <file_name>image</file_name>
+        <hash>0d835cfa2e43b5625221ec8dd0a47df93af0a852eb09d9b3b803eb04c1b16543</hash>
+        <image_height>93</image_height>
+        <image_width>126</image_width>
+        <size_bytes>384</size_bytes>
+        <size_compressed>217</size_compressed>
+        <state>available</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-16 18:01:26</sys_created_on>
+        <sys_id>6569b8c32fa23010ec275e072799b680</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-09-16 18:01:27</sys_updated_on>
+        <table_name>ZZ_YYdb_image</table_name>
+        <table_sys_id>e239fcc32fe23010ec275e072799b626</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAAAA==</data>
+        <length>16</length>
+        <position>0</position>
+        <sys_attachment display_value="image" sys_id="6569b8c32fa23010ec275e072799b680">6569b8c32fa23010ec275e072799b680</sys_attachment>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-16 18:01:26</sys_created_on>
+        <sys_id>a569b8c32fa23010ec275e072799b680</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>6wzwc+flkuJiYGDg9fRwCQLSdUAcy8EGJJOlLwkAKc4Cj8hiBgZuYRBmZJg1RwIoyFgc5O7EsO6czEsghyXd0deRgWFjP/efRFagnKini2NIBePby4aChwIYWC7yNwutUuCwFklgZpfwYjWW4BSaNO1N9ddS63IJaZ3zx41uTH2s4PlD4+Hiln4r3+3Xq2vN+L8dfQzkCdl5QYSHEMMqVzJ23+X0D+bPfn/ds+0jTPYV+0UfrqPLnHWSgAHG4Onq57LOKaEJAGoye+mAAQAA</data>
+        <length>276</length>
+        <position>1</position>
+        <sys_attachment display_value="image" sys_id="6569b8c32fa23010ec275e072799b680">6569b8c32fa23010ec275e072799b680</sys_attachment>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-16 18:01:26</sys_created_on>
+        <sys_id>2969b8c32fa23010ec275e072799b680</sys_id>
+    </sys_attachment_doc>
+</record_update>

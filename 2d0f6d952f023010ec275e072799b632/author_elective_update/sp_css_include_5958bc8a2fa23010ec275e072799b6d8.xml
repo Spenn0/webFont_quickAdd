@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_css_include">
+    <sp_css_include action="DELETE">
+        <name>Noto Sans, Quicksand, Righteous (Google </name>
+        <source>https://fonts.googleapis.com/css2?family</source>
+        <sp_css/>
+        <sys_class_name>sp_css_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-13 15:22:51</sys_created_on>
+        <sys_id>5958bc8a2fa23010ec275e072799b6d8</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Noto Sans, Quicksand, Righteous (Google </sys_name>
+        <sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope>
+        <sys_update_name>sp_css_include_5958bc8a2fa23010ec275e072799b6d8</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-09-13 15:22:51</sys_updated_on>
+        <url>https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&amp;family=Quicksand:wght@700&amp;family=Righteous&amp;display=swap</url>
+    </sp_css_include>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</application>
+        <file_path/>
+        <instance_id>9b4fa053db2e089052dd2f17d496193c</instance_id>
+        <instance_name>dev98323</instance_name>
+        <name>sp_css_include_5958bc8a2fa23010ec275e072799b6d8</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_css_include"><sp_css_include action="INSERT_OR_UPDATE"><name>Noto Sans, Quicksand, Righteous (Google </name><source>https://fonts.googleapis.com/css2?family</source><sp_css/><sys_class_name>sp_css_include</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2021-09-13 15:22:51</sys_created_on><sys_id>5958bc8a2fa23010ec275e072799b6d8</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Noto Sans, Quicksand, Righteous (Google </sys_name><sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package><sys_policy/><sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope><sys_update_name>sp_css_include_5958bc8a2fa23010ec275e072799b6d8</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2021-09-13 15:22:51</sys_updated_on><url>https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&amp;family=Quicksand:wght@700&amp;family=Righteous&amp;display=swap</url></sp_css_include></record_update>]]></payload>
+        <payload_hash>1363007452</payload_hash>
+        <record_name>Noto Sans, Quicksand, Righteous (Google </record_name>
+        <reverted_from/>
+        <source>1a67c4e02f263010ec275e072799b612</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-13 15:22:51</sys_created_on>
+        <sys_id>d558bc8a2fa23010ec275e072799b6da</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>17bdfc0fb290000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-09-13 15:22:51</sys_updated_on>
+        <type>CSS Include</type>
+        <update_guid>dd58bc8a8ca230108aded82dbc3e96d9</update_guid>
+        <update_guid_history>dd58bc8a8ca230108aded82dbc3e96d9:1363007452</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Noto Sans, Quicksand, Righteous (Google ">637558cb2f623010ec275e072799b682</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-16 15:24:33</sys_created_on>
+        <sys_db_object display_value="" name="sp_css_include">sp_css_include</sys_db_object>
+        <sys_id>70298c3cbceb49cca801261ec2691fc4</sys_id>
+        <sys_metadata>5958bc8a2fa23010ec275e072799b6d8</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Noto Sans, Quicksand, Righteous (Google </sys_name>
+        <sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope>
+        <sys_scope_delete display_value="">7852965362634401b169718d42db1d41</sys_scope_delete>
+        <sys_update_name>sp_css_include_5958bc8a2fa23010ec275e072799b6d8</sys_update_name>
+        <sys_update_version display_value="sp_css_include_5958bc8a2fa23010ec275e072799b6d8">d558bc8a2fa23010ec275e072799b6da</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-09-16 15:24:33</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

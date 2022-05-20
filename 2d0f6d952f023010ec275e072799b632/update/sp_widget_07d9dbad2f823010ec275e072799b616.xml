@@ -1,32 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[function() {
+        <client_script><![CDATA[function($scope, spUtil) {
 	/* widget controller */
 	var c = this;
-	//	c.splitJoinUrl = splitJoinUrl;
+	$scope.view = false;
+	
 	c.formData = {};
 
 	newName = '';
 
-	//$scope.$watch('c.formData', function(newVal){
-	//	console.log(c.formData);
-	//});
-
-
-
 	function selectPortal(portal) {
 		var id = portal.sys_id;
 		console.log(id);
-
 		var theme = portal.sp_theme;
 		c.data.id = id;
 		c.data.theme = theme;
-
+		c.infoMessage ="${Hello World}";
+		c.sureMessage = "${Are you sure you want to delete this?}";
+		c.areYouSure = "${Are you sure?}"
+	//	console.log("THIS IS THE PORTAL THEME HERE: " + c.formData.portal.theme)
 		// *extra cred* you could make a business rule that
 		// authenticates the url that is pasted in the url field.		
 	}
+		// THIS FUNCTION REVEALS THE BOX THAT SHOWS THE THEME AND CSS INCLUDES WITHIN THE VIEW
+	c.revealThemeEditor = function() {
+		if($scope.view === true) {
+			$scope.view = false;
+		} else {
+			$scope.view = true;
+		}
 
+	}
+		// THIS FUNCTION TAKES THE DATA THAT COMES FROM THE FORM 
+		// WITHIN THE VIEW AND MASSAGES IT A LITTLE BEFORE SENDING IT TO THE SERVER SCRIPT
 	c.importUrl = function (formData) {
 		var newName = '';
 		var metaSubstring = '';
@@ -34,11 +41,10 @@
 		var nameArray = [];
 		var finalNameArray = [];
 
-
-		//		console.log("THIS IS FORM DATA: "+ formData)
-
+		spUtil.addInfoMessage(c.infoMessage);
+		var answer = confirm(c.sureMessage + c.formData.portal.cssInclArr[$index].name);
 		//================================================
-		// vv THIS FUNCTION vv TRIMS THE URL INTO THE BATCH OF 
+		// vv THIS part of the FUNCTION vv TRIMS THE URL INTO THE BATCH OF 
 		// FONT FAMILY NAMES (FROM GOOGLE FONTS) THAT WE WILL  
 		// TRIM AND REFINE IN THE FOLLOWING FUNCTIONS
 
@@ -47,17 +53,12 @@
 				c.formData.url.indexOf("family="),
 				c.formData.url.lastIndexOf("&") + 1
 			)
-
-			//	console.log("THIS IS THE METASUBSTRING: " + metaSubstring)
 		}
 
 		newSubstringArray = metaSubstring.toString().split("family=")
 
-
-		//				console.log("newSUBSTRING: " + newSubstringArray)
-
 		//================================================
-		// vv THIS FUNCTION vv IS TAKING THE NEWSUBSTRING ARRAY AND 
+		// vv THIS part of the FUNCTION vv IS TAKING THE NEWSUBSTRING ARRAY AND 
 		// REFINING IT DOWN INTO AN ARRAY OF OBJECTS THAT REFLECT
 		// THE NAMES OF EACH FONT WITHIN THE ORIGINAL URL
 
@@ -67,29 +68,24 @@
 				var theSubstringArraySplice = theSubstringArray.splice(-1, 1)
 				nameArray.push(theSubstringArraySplice)
 			}
-			//				console.log("THIS IS THE SUBSTRING ARRAY: " + theSubstringArray);
 			if (theSubstringArray.indexOf(":") > -1) {
 				var newSubstringArraySplit = theSubstringArray.split(":");
 				var newSubstringArraySplitShift = newSubstringArraySplit.shift();
 				nameArray.push(newSubstringArraySplitShift)
-				//					console.log("NEW ARRAY: "+ newSubstringArraySplitShift);
 			} else {
 				var theSubstringAltSplit = theSubstringArray.split("&")
 				theSubstringAltSplit.pop()
 				var toString = theSubstringAltSplit.toString()
 				nameArray.push(toString)
 			}
-
-			//	console.log("THIS IS THE NAME ARRAY: " + nameArray)
 		}
 
 		//================================================
-		// vv THIS FUNCTION vv IS TAKING THE ARRAY OF OBJECTS FROM 
+		// vv THIS part of the FUNCTION vv IS TAKING THE ARRAY OF OBJECTS FROM 
 		// THE ABOVE FUNCTION, AND IT IS TURNING IT INTO A STRING
 		// SEPERATED BY SPACES AND COMMAS.
 
 		for (var e = 0; e < nameArray.length; e++) {
-			//	var join = ''
 			if (nameArray[e].indexOf("+") > -1) {
 				var split = nameArray[e].split("+");
 				var join = split.join(" ");
@@ -99,35 +95,9 @@
 			}
 			var joined = finalNameArray.join(", ");
 			newName = joined;
-
-			console.log(joined);
 		}
-		//	console.log(finalNameArray);
 
-
-
-		//	var fontSubstring = formData.url.substring(
-		//				formData.url.indexOf("family=") + 7,
-		//				formData.url.lastIndexOf("&")
-		//			)
-		//			var fontNameSplit = fontSubstring.split(":");
-		//				fontNameSplit.pop();	
-		//			var	fontNameSplitJoin = fontNameSplit.join();		
-		//			var fontNameSplit2 = fontNameSplitJoin.split("+");
-		//			var fontNameSplitJoin2 = fontNameSplit2.join(" ");
-
-		//			console.log("this is fontNameSPlit" + fontNameSplitJoin2);
-		//			console.log("this is the url:" + formData.url)
-
-		//	 newName = fontNameSplitJoin2;
-
-		//	console.log("font-namesplit: " + fontNameSplit);	
-		//	console.log("font-namesplitJoin: " + fontNameSplitJoin);
-		//	console.log("font-namesplit2: " + fontNameSplit2);
-		//	console.log("font-namesplitJoin2: " + fontNameSplitJoin2);
-
-		//	  newName = fontNameSplitJoin2
-
+		//vv THIS part of the FUNCTION vv SENDS DATA INTO THE SERVER SCRIPT
 		c.server.get({
 			action: 'importUrl',
 			formData: formData,
@@ -135,16 +105,26 @@
 		}).then(function (r) {
 			c.data.portals.unshift(r.data.importUrl);
 			c.data.portalID = r.data.portalID;
-
+			c.data.portals.cssIncl = r.data.portals.cssIncl;
+			// console.log("CSS_INCLUDE: "+ c.data.portals.cssIncl)
 		})
 	}
 }
 ]]></client_script>
         <controller_as>c</controller_as>
-        <css>.main-container {
-	display:flex;
-	flex-direction: row;
-	width: 600px;
+        <css>.page-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+  width: 600px;
   color: #454547;
 }
 .main-form-container {
@@ -152,54 +132,61 @@
   justify-content: center;
   align-items: start;
   flex-direction: column;
-	padding: 35px;
+  padding: 35px;
   background-image: url("sab_left_1.png");
-	background-position: center;
-	background-size:cover;
-	flex: 1;
+  background-position: center;
+  background-size: cover;
+  flex: 1;
+  width: 300px;
 }
 .right-container {
   background-image: url("sab_right_2.png");
   background-position: center;
-	background-size:cover;
+  background-size: cover;
   padding: 35px;
-	flex:2;
+  flex: 2;
+  width: 300px;
 }
 .title-container {
-
-	display: flex;
- // justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  padding: 10px;
 }
 
 .main-title {
-  font-size:20px;
-  font-familiy: Sora, sans-serif;
+  font-size: 21.5px;
+  font-family: Sora, sans-serif;
+  margin-top: 10px;
   margin-bottom: 0px;
-  padding:0px;
-  
+  padding: 0px;
 }
 
+.line {
+  margin: 0;
+  padding: 0;
+}
 .sub-title {
   display: flex;
   justify-content: center;
+  font-family: Sora, sans-serif;
+  text-align: center;
   font-size: 12px;
-  margin: 15 0 15 15;
+  margin-top: 5px;
+  margin-bottom: 0px;
   padding: 0px;
 }
 
 .form-container {
   display: flex;
-//  justify-content: space-evenly;
-//	align-items: space-evenly;
   flex-direction: column;
 }
 
 .url-input-form {
   justify-content: space-evenly;
   display: flex;
-	align-items: space-evenly;
+  align-items: space-evenly;
   flex-direction: column;
 }
 
@@ -209,26 +196,65 @@
 }
 
 .url-input {
-	height: 20px;
+  height: 20px;
 }
 
 .portal-input-label {
   font-size: 13px;
+  margin: 0px;
+  padding-top: 10px;
 }
 
 .portal-input {
-	height: 20px;
-
+  height: 20px;
 }
 
-.portal-input-option {
+// .portal-input-option {
 
-}
+// }
 
 .submit-button {
   margin: 10px;
 }
 
+.css-dependency-reveal-container {
+  width: 600px;
+  height: 280px;
+  background-color: rgb(249, 244, 233);
+}
+.theme-container {
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  color: #454547;
+}
+.card-container {
+  display: flex;
+  flex-direction: row;
+  margin: 15px;
+  margin-top: 0px;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 200px;
+}
+.dependency-card {
+  width: 110px;
+  height: 85px;
+  color: black;
+  font-size: 12px;
+  padding: 10px;
+  padding-left: 15px;
+  background-image: url("3d_box.png");
+  background-position: center;
+  background-size: cover;
+}
+.checkbox-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
 </css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -245,54 +271,58 @@
         <roles/>
         <script><![CDATA[(function () {
 	/* populate the 'data' object */
-	/* e.g., data.table = $sp.getValue('table'); */
-
-	//
-
 
 	data.portals = [];
+
 
 	var allThePortalsGR = new GlideRecord("sp_portal");
 	allThePortalsGR.orderByDesc("sys_created_on");
 	allThePortalsGR.query();
-
-
+	
+	// THIS FUNCTION LOOPS THROUGH ALLTHEPORTALSGR AND GRABS THE DATA
+	// AND PUTS IT INTO AN OBJECT TO BE CONSUMED BY THE VIEW
 	while (allThePortalsGR.next()) {
-		console.log('made it to while!');
-
 		var portalObj = {};
-
+		portalObj.cssInclArr = [];
+	
 		portalObj.sys_id = allThePortalsGR.getUniqueValue();
 		portalObj.theme = allThePortalsGR.theme + '';
+		portalObj.themeName = allThePortalsGR.theme.name + '';
 		portalObj.title = allThePortalsGR.getValue("title");
-		//			portalObj.cssDep = portalObj.title.getValue("m2m_sp_theme_css_include");
+
+		 var allTheM2MThemeCssIncl = new GlideRecord("m2m_sp_theme_css_include");
+		 allTheM2MThemeCssIncl.addQuery("sp_theme", portalObj.theme);
+		 allTheM2MThemeCssIncl.query();
+		
+		while( allTheM2MThemeCssIncl.next()) {
+		var cssInclObj = {};
+		
+			cssInclObj.name = allTheM2MThemeCssIncl.sp_css_include.name + "";
+			portalObj.cssInclArr.push(cssInclObj)
+
+			// console.log("CSS INCL OBJ NAME:" + cssInclObj.name);
+		}
 
 		data.portals.push(portalObj);
 
 	}
-
+    // THIS FUNCTION TAKES THE DATA FROM THE IMPORT URL AND PUTS THE DATA IN THE CORRECT PLACES:
+	// IN THE sp_css_include , m2m_sp_theme_css_include , sp_theme , and sp_portal tables
 	if (input) {
 		if (input.action === 'importUrl') {
 
 			var inputUrl = input.formData.url;
 			var name = input.formData.portalName;
-			var portalID = data.id;
+			var portalID = input.formData.portal.sys_id.toString();
 			var theme = input.formData.portal.theme;
 			var newUrlName = input.newName;
-
-			console.log('theme:' + theme);
-			console.log(JSON.stringify(input));
-			console.log(inputUrl);
-			console.log("thisIsNewName: " + newUrlName);
-
 
 			var spIncludeGR = new GlideRecord('sp_css_include');
 			spIncludeGR.initialize();
 			spIncludeGR.name = newUrlName + " (Google Web Font)";
 			spIncludeGR.url = inputUrl;
-			spIncludeGR.source = inputUrl;
+			spIncludeGR.source = inputUrl; // maybe update l8r
 			var spIncludeGRID = spIncludeGR.insert();
-
 
 			var m2mThemeInclude = new GlideRecord('m2m_sp_theme_css_include');
 			m2mThemeInclude.initialize();
@@ -302,8 +332,6 @@
 			m2mThemeInclude.order = 10;
 			var m2mThemeIncludeID = m2mThemeInclude.insert();
 
-
-
 			//---------------------------
 			//create new theme if the portal doesn't already have one-------
 			if (!theme) {
@@ -312,14 +340,28 @@
 				spThemeGR.initialize();
 				spThemeGR.css_includes = spIncludeGRID;
 				spThemeGR.name = "New Theme: " + newUrlName;
-				spThemeGR.update();
 				var spThemeGRID = spThemeGR.insert();
 
 
-				m2mThemeIncludeID();
+				var spPortalGR = new GlideRecord('sp_portal');
+				spPortalGR.addQuery("sys_id", portalID);
+				spPortalGR.query();
+				console.log("This is the portal ID: " + portalID)
 
+				if (spPortalGR.next()) {
+					console.log(spPortalGR.getUniqueValue())
+					console.log("this is the spThemeGRID: " + spThemeGRID)
+					spPortalGR.theme = spThemeGRID;
+					spPortalGR.update();
+				}
+				var spIncludeGR = new GlideRecord('sp_css_include');
+				spIncludeGR.initialize();
+				spIncludeGR.name = newUrlName + " (Google Web Font)";
+				spIncludeGR.url = inputUrl;
+				spIncludeGR.source = inputUrl; // maybe update l8r
+				var spIncludeGRID = spIncludeGR.insert();
 
-				m2mThemeIncludeID = new GlideRecord('m2m_sp_theme_css_include');
+				// console.log("this is the M2M THEME: " + m2m_sp_theme_css_include)
 				m2mThemeInclude.initialize();
 				m2mThemeInclude.sp_css_include = spIncludeGRID;
 				m2mThemeInclude.sp_theme = theme;
@@ -327,9 +369,7 @@
 				m2mThemeInclude.order = 10;
 			}
 			// ---------------------
-
-
-
+			//inputThemeCssIncl = theme.sp_css_include;
 		}
 	}
 })();]]></script>
@@ -338,53 +378,68 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-08-18 17:20:13</sys_created_on>
         <sys_id>07d9dbad2f823010ec275e072799b616</sys_id>
-        <sys_mod_count>884</sys_mod_count>
+        <sys_mod_count>1314</sys_mod_count>
         <sys_name>WebFont_url_dep</sys_name>
         <sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package>
         <sys_policy/>
         <sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope>
         <sys_update_name>sp_widget_07d9dbad2f823010ec275e072799b616</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2021-09-10 18:54:51</sys_updated_on>
-        <template><![CDATA[<div class="main-container">
-  <div class="main-form-container">
-  <div class="title-container">
-    <h1 class="main-title" >
-    Webfont Quick Add
-  </h1>
-  	<h2 class="sub-title">
-    Quickly and swiftly add a webfont to your portal here! 
-    </h2>
+        <sys_updated_on>2022-03-29 14:42:42</sys_updated_on>
+        <template><![CDATA[<div class="page-container width-add">
+  <div class="main-container">
+    <div class="main-form-container">
+      <div class="title-container">
+        <h1 class="main-title">
+          ${Webfont Quick Add}
+        </h1>
+        <h2 class="sub-title">
+          ${Quickly and swiftly add a webfont to your portal here!}
+        </h2>
+      </div>
+      <div class="form-container">
+        <form class="url-input-form" ng-submit="c.importUrl(c.formData)">
+          <label class="url-input-label">
+            ${Url}:
+          </label>
+          <input class="url-input" type="url" ng-model="c.formData.url">
+          <label class="portal-input-label">
+            ${Portal}:
+          </label>
+          <select class="portal-input" ng-options="portal as portal.title for portal in data.portals"
+            ng-model="c.formData.portal" value="{{portal}}" ng-click="c.getCssInc(portal)">
+            <option class="portal-input-option" value="">- ${s e l e c t - p o r t a l} -</option>
+          </select>
+          <div class="checkbox-container">
+        </div>
+          <button type="submit" class="submit-button">
+            ${s u b m i t}
+          </button>
+        </form>
+        <button class="edit-theme-checkbox-label" ng-click="c.revealThemeEditor()">${view theme}</button>
+      </div>
+
+    </div>
+    
+    <div class="right-container">
+      
+    </div>
   </div>
-  <div class="form-container">
-    <form class="url-input-form" ng-submit="c.importUrl(c.formData)">
-    <label class="url-input-label">
-      Url:
-    </label>
-      <input class="url-input" type="text-field" ng-model="c.formData.url">
-     <label class="portal-input-label">
-      Portal:
-      </label>
-      <select class="portal-input" ng-options="portal as portal.title for portal in data.portals" ng-model="c.formData.portal" value="{{portal}}">
- <option class="portal-input-option" value="" >- s e l e c t - p o r t a l -</option>
-      </select>
-      <button type="submit" class="submit-button">
-        s u b m i t
-      </button>  
-    </form>
+  <!--- SHOW THE USER WHAT OTHER THEMES ARE AVAILABLE!--->
+  <div class="css-dependency-reveal-container" ng-show="view">
+    <div class="theme-container">
+    <h3>${Theme}: {{ c.formData.portal.themeName}}</h3>
   </div>
-<!--  <div class="css-dependency-reveal-container">
-    <div class="dependency-card" ng-repeat="dep in portal.cssDep track by $index">
+    <div></div>
+    <div class="card-container">
+    <div class="dependency-card" ng-repeat="cssIncl in c.formData.portal.cssInclArr track by $index">
       <p>
-        {{dep}}
+        {{cssIncl.name}}
       </p>
     </div>
-  </div> -->
-  <!--- POTENTIALLY SHOW THE USER WHAT OTHER CSS DEPENDENCIES ARE ON THIS THEME!--->
-</div>
-<div class="right-container">
-  
   </div>
-  </div>]]></template>
+  </div>
+  <!--- SHOW THE USER WHAT OTHER THEMES ARE AVAILABLE!--->
+</div>]]></template>
     </sp_widget>
 </record_update>

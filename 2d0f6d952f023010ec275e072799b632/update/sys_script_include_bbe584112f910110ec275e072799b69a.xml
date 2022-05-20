@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_669416_imp_url.AppScrape</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>AppScrape</name>
+        <script><![CDATA[var AppScrape = Class.create();
+AppScrape.prototype = {
+    initialize: function() {
+        //this.appMetaData = 'sys_metadata';
+        //this.appSys = '2d0f6d952f023010ec275e072799b632'; //app on the sys_app table
+        //this.appWidgetSys = '07d9dbad2f823010ec275e072799b616'; //widget on the sys_metadata table
+        this.appName = 'import_url_css_dep';
+    },
+
+    app: function() {
+        gs.info('hello');
+        var appGR = new GlideRecord('sys_metadata');
+        appGR.addQuery('sys_scope.scope', 'x_669416_imp_url');
+        appGR.addQuery('sys_name', 'WebFont_url_dep');
+        appGR.query();
+        while (appGR.next()) {
+			var tableName = appGR.sys_class_name;
+			var widget = new GlideRecord(tableName);
+        if (widget.get(appGR.getUniqueValue())) {
+           // gs.info(widget.name);
+           // gs.info(widget.template);
+			var bigString = widget.template.toString();
+			//gs.info('this is a big string: ' + bigString);
+        }
+          //  gs.info(appGR.sys_class_name);
+        } return bigString;
+    },
+
+    type: 'AppScrape'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2022-01-25 20:41:13</sys_created_on>
+        <sys_id>bbe584112f910110ec275e072799b69a</sys_id>
+        <sys_mod_count>95</sys_mod_count>
+        <sys_name>AppScrape</sys_name>
+        <sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope>
+        <sys_update_name>sys_script_include_bbe584112f910110ec275e072799b69a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2022-01-26 22:07:43</sys_updated_on>
+    </sys_script_include>
+</record_update>
