@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
     <sp_widget action="INSERT_OR_UPDATE">
         <category>custom</category>
-        <client_script><![CDATA[function($scope) {
+        <client_script><![CDATA[function($scope, spUtil) {
 	/* widget controller */
 	var c = this;
 	$scope.view = false;
@@ -16,6 +16,9 @@
 		var theme = portal.sp_theme;
 		c.data.id = id;
 		c.data.theme = theme;
+		c.infoMessage ="${Hello World}";
+		c.sureMessage = "${Are you sure you want to delete this?}";
+		c.areYouSure = "${Are you sure?}"
 	//	console.log("THIS IS THE PORTAL THEME HERE: " + c.formData.portal.theme)
 		// *extra cred* you could make a business rule that
 		// authenticates the url that is pasted in the url field.		
@@ -38,7 +41,8 @@
 		var nameArray = [];
 		var finalNameArray = [];
 
-
+		spUtil.addInfoMessage(c.infoMessage);
+		var answer = confirm(c.sureMessage + c.formData.portal.cssInclArr[$index].name);
 		//================================================
 		// vv THIS part of the FUNCTION vv TRIMS THE URL INTO THE BATCH OF 
 		// FONT FAMILY NAMES (FROM GOOGLE FONTS) THAT WE WILL  
@@ -374,45 +378,45 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-08-18 17:20:13</sys_created_on>
         <sys_id>07d9dbad2f823010ec275e072799b616</sys_id>
-        <sys_mod_count>1312</sys_mod_count>
+        <sys_mod_count>1314</sys_mod_count>
         <sys_name>WebFont_url_dep</sys_name>
         <sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package>
         <sys_policy/>
         <sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope>
         <sys_update_name>sp_widget_07d9dbad2f823010ec275e072799b616</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2021-09-20 19:29:50</sys_updated_on>
+        <sys_updated_on>2022-03-29 14:42:42</sys_updated_on>
         <template><![CDATA[<div class="page-container width-add">
   <div class="main-container">
     <div class="main-form-container">
       <div class="title-container">
         <h1 class="main-title">
-          Webfont Quick Add
+          ${Webfont Quick Add}
         </h1>
         <h2 class="sub-title">
-          Quickly and swiftly add a webfont to your portal here!
+          ${Quickly and swiftly add a webfont to your portal here!}
         </h2>
       </div>
       <div class="form-container">
         <form class="url-input-form" ng-submit="c.importUrl(c.formData)">
           <label class="url-input-label">
-            Url:
+            ${Url}:
           </label>
           <input class="url-input" type="url" ng-model="c.formData.url">
           <label class="portal-input-label">
-            Portal:
+            ${Portal}:
           </label>
           <select class="portal-input" ng-options="portal as portal.title for portal in data.portals"
             ng-model="c.formData.portal" value="{{portal}}" ng-click="c.getCssInc(portal)">
-            <option class="portal-input-option" value="">- s e l e c t - p o r t a l -</option>
+            <option class="portal-input-option" value="">- ${s e l e c t - p o r t a l} -</option>
           </select>
           <div class="checkbox-container">
         </div>
           <button type="submit" class="submit-button">
-            s u b m i t
+            ${s u b m i t}
           </button>
         </form>
-        <button class="edit-theme-checkbox-label" ng-click="c.revealThemeEditor()">view theme</button>
+        <button class="edit-theme-checkbox-label" ng-click="c.revealThemeEditor()">${view theme}</button>
       </div>
 
     </div>
@@ -424,7 +428,7 @@
   <!--- SHOW THE USER WHAT OTHER THEMES ARE AVAILABLE!--->
   <div class="css-dependency-reveal-container" ng-show="view">
     <div class="theme-container">
-    <h3>Theme: {{ c.formData.portal.themeName}}</h3>
+    <h3>${Theme}: {{ c.formData.portal.themeName}}</h3>
   </div>
     <div></div>
     <div class="card-container">
