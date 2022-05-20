@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_669416_imp_url.aDocumentGenerator</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>aDocumentGenerator</name>
+        <script><![CDATA[var aDocumentGenerator = Class.create();
+aDocumentGenerator.prototype = {
+    initialize: function() {
+    },
+getDocumentationRecords: function() {
+        var generatorData = "";
+
+        //calling functions
+        var documentGenerator = this.getDocumentData(generatorData);
+
+        generatorData = generatorData + "\n" + documentGenerator;
+
+        var createDoc = this.createWordDocument(generatorData);
+    },
+
+
+    //function to get all data needed for document generation
+    getDocumentData: function(generatorData) {
+        var docConfig = {
+         //   applicationScope: '50a13db62f243010a8ce2b5df699b6e2', // sys_id of sys_app record
+			applicationScope: '2d0f6d952f023010ec275e072799b632',
+            targetArtifacts: [{
+                    displayName: 'App Tables', // could be header in word doc
+                    targetTable: 'sys_db_object', // required
+                    targetField: 'name', // will eventually need to be multiple fields
+                    targetQuery: 'sys_scope={{appScope}}'
+                },
+                {
+                    displayName: 'App Script Includes', // could be header in word doc
+                    targetTable: 'sys_script_include', // required
+                    targetField: 'name', // will eventually need to be multiple fields
+                    targetQuery: 'sys_scope={{appScope}}'
+                },
+                {
+                    displayName: 'App Table Fields', // could be header in word doc
+                    targetTable: 'sys_dictionary', // required
+                    targetField: 'element', // will eventually need to be multiple fields
+                    targetQuery: 'sys_scope={{appScope}}'
+                },
+                {
+                    displayName: 'App Roles', // could be header in word doc
+                    targetTable: 'sys_user_role', // required
+                    targetField: 'name', // will eventually need to be multiple fields
+                    targetQuery: 'sys_scope={{appScope}}'
+                },
+                {
+                    displayName: 'App Scheduled Jobs', // could be header in word doc
+                    targetTable: 'sysauto_script', // required
+                    targetField: 'name', // will eventually need to be multiple fields
+                    targetQuery: 'sys_scope={{appScope}}'
+                },
+                {
+                    displayName: 'App UI Scripts', // could be header in word doc
+                    targetTable: 'sys_ui_script', // required
+                    targetField: 'name', // will eventually need to be multiple fields
+                    targetQuery: 'sys_scope={{appScope}}'
+                },
+                {
+                    displayName: 'App Modules', // could be header in word doc
+                    targetTable: 'sys_app_module', // required
+                    targetField: 'title', // will eventually need to be multiple fields
+                    targetQuery: 'sys_scope={{appScope}}'
+                }
+            ]
+
+        };
+
+
+        var documentData = getData(docConfig, generatorData);
+
+        generatorData = generatorData + documentData;
+
+        return generatorData;
+
+        function getData(docConfig, generatorData) {
+            if (!docConfig) {
+                return;
+            } else {
+                for (var i = 0; i < docConfig.targetArtifacts.length; i++) {
+                    var thisTarget = docConfig.targetArtifacts[i];
+                    var query = thisTarget.targetQuery.replace('{{appScope}}', docConfig.applicationScope);
+                    var targetGR = new GlideRecord(thisTarget.targetTable);
+                    targetGR.addEncodedQuery(query);
+                    targetGR.query();
+
+                    while (targetGR.next()) {
+                        var fields = targetGR.getValue(thisTarget.targetField);
+
+                        generatorData = generatorData + "\n" + thisTarget.displayName + ": " + fields;
+
+                    }
+                }
+                return generatorData;
+            }
+
+        }
+    },
+
+
+    createWordDocument: function(generatorData) {
+        var data = generatorData;
+        //create gliderecord to attachment table and then initializing that record
+        var sysAttachmentGR = new GlideRecord('sys_attachment');
+        sysAttachmentGR.initialize();
+        var attachmentRecord = new GlideSysAttachment();
+        //creating word document with appropriate data
+        var attachmentId = attachmentRecord.write(sysAttachmentGR, "TestSample.doc", 'text/plain', data);
+    },
+    type: 'aDocumentGenerator'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-30 20:13:49</sys_created_on>
+        <sys_id>d1dddde32f363010ec275e072799b69a</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>aDocumentGenerator</sys_name>
+        <sys_package display_value="import_url_css_dep" source="x_669416_imp_url">2d0f6d952f023010ec275e072799b632</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="import_url_css_dep">2d0f6d952f023010ec275e072799b632</sys_scope>
+        <sys_update_name>sys_script_include_d1dddde32f363010ec275e072799b69a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-09-30 20:17:01</sys_updated_on>
+    </sys_script_include>
+</record_update>
